@@ -741,15 +741,42 @@
 
       if (iconType === 'heart') {
         return `
-          <svg viewBox="0 0 200 200" class="w-36 h-36 sm:w-40 sm:h-40 drop-shadow-sm transition-transform duration-300 group-hover:scale-105" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="100" cy="36" r="9" stroke="#D4AF37" stroke-width="4" fill="#FFFDF9"/>
-            <path d="M100 162C100 162 42 124 42 82C42 61 58 46 77 46C88 46 96 52 100 60C104 52 112 46 123 46C142 46 158 61 158 82C158 124 100 162 100 162Z" fill="${fill}" stroke="${stroke}" stroke-width="3.5" stroke-linejoin="round"/>
-            <path d="M63 72C66 64 73 60 80 60" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
-            <rect x="74" y="92" width="52" height="18" rx="9" fill="#FFFDF9" fill-opacity="0.9"/>
-            <circle cx="88" cy="101" r="2.5" fill="${stroke}"/>
-            <circle cx="100" cy="101" r="2.5" fill="${stroke}"/>
-            <circle cx="112" cy="101" r="2.5" fill="${stroke}"/>
-          </svg>
+          <svg viewBox="0 0 240 190" width="240" height="190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ラブレター型迷子タグ">
+  <!-- 背景の装飾（キラキラ・小ハート） -->
+  <circle cx="42" cy="148" r="4" fill="#fbcfe8" />
+  <circle cx="204" cy="46" r="5" fill="#bae6fd" />
+  <path d="M196 142 C196 138, 190 138, 190 142 C190 138, 184 138, 184 142 C184 147, 190 151, 190 151 C190 151, 196 147, 196 142 Z" fill="#fde68a" />
+
+  <!-- 左上のストラップ紐 -->
+  <path d="M62 66 C 42 46, 22 32, 16 18 C 12 9, 24 4, 32 12 C 44 24, 54 44, 65 63" fill="none" stroke="#f9a8d4" stroke-width="5" stroke-linecap="round" />
+  <path d="M62 66 C 42 46, 22 32, 16 18 C 12 9, 24 4, 32 12 C 44 24, 54 44, 65 63" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3 4" stroke-linecap="round" opacity="0.8" />
+  <!-- ストラップ結び目パーツ -->
+  <rect x="44" y="42" width="11" height="7" rx="3.5" transform="rotate(-42 44 42)" fill="#f472b6" />
+
+  <!-- ラブレター本体（影） -->
+  <rect x="52" y="56" width="144" height="98" rx="16" fill="#fce7f3" />
+  <!-- ラブレター本体（封筒） -->
+  <rect x="48" y="52" width="144" height="98" rx="16" fill="#fffdf9" stroke="#f9a8d4" stroke-width="3" />
+
+  <!-- 封筒のフラップ（フタ・折り目） -->
+  <path d="M52 145 L104 102 M188 145 L136 102" stroke="#fbcfe8" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M51 57 L111 106 C116 110, 124 110, 129 106 L189 57" fill="#fff5f8" stroke="#f9a8d4" stroke-width="3" stroke-linejoin="round" />
+
+  <!-- 左上のハトメ（ストラップ穴・金具） -->
+  <circle cx="64" cy="67" r="6.5" fill="#fde68a" stroke="#f59e0b" stroke-width="1.5" />
+  <circle cx="64" cy="67" r="3" fill="#ffffff" />
+
+  <!-- 中央のハート（★ここをカラーごとに変更） -->
+  <path
+    d="M120 124 C120 124, 96 108, 96 93 C96 84, 103 78, 111 78 C115.5 78, 118.5 80.5, 120 83.5 C121.5 80.5, 124.5 78, 129 78 C137 78, 144 84, 144 93 C144 108, 120 124, 120 124 Z"
+    fill="#f9a8d4"
+    stroke="#ffffff"
+    stroke-width="2.5"
+    stroke-linejoin="round"
+  />
+  <!-- ハートのツヤ（ハイライト） -->
+  <path d="M103 91 C103 87, 106 84, 110 84" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.85" />
+</svg>
         `;
       }
       if (iconType === 'cloud') {
