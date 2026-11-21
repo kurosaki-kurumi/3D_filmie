@@ -661,7 +661,7 @@
     ];
 
     /**
-     * ラブレター型迷子タグのSVGイラストを生成（シルバーストラップ＆左右ネックレスチェーン対応）
+     * ラブレター型迷子タグのSVGイラストを生成（シルバーストラップ＆ロングポシェットチェーン対応）
      */
     function createGoodsIllustrationSvg(iconType, colorHex) {
       const heartFill = colorHex || "#f9a8d4";
@@ -669,12 +669,15 @@
       const isLightColor = normalizedHex === "#ffffff" || normalizedHex === "#fffdf7";
       const heartStroke = isLightColor ? "#cbd5e1" : "#ffffff";
 
-      // ストラップパーツ（シルバー） or 左右ネックレスチェーンパーツの切り替え
+      // チェーンタイプは長いポシェット紐が収まるよう上側の表示領域を拡張
+      const viewBox = iconType === "chain" ? "0 -52 240 242" : "0 0 240 190";
+
+      // ストラップパーツ（シルバー） or 長めのポシェット風ボールチェーンの切り替え
       const attachmentSvg = iconType === "chain"
         ? `
-          <!-- 左右のネックレス風ボールチェーン（チェーンタイプ） -->
-          <path d="M64 67 C 68 22, 92 10, 120 10 C 148 10, 172 22, 176 67" fill="none" stroke="#94a3b8" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="1 6.5" />
-          <path d="M64 67 C 68 22, 92 10, 120 10 C 148 10, 172 22, 176 67" fill="none" stroke="#e2e8f0" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="1 6.5" />
+          <!-- 長めのポシェット風ボールチェーン（チェーンタイプ） -->
+          <path d="M64 67 C 62 -2, 86 -42, 120 -42 C 154 -42, 178 -2, 176 67" fill="none" stroke="#94a3b8" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="1 6.5" />
+          <path d="M64 67 C 62 -2, 86 -42, 120 -42 C 154 -42, 178 -2, 176 67" fill="none" stroke="#e2e8f0" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="1 6.5" />
         `
         : `
           <!-- 左上のシルバーストラップ（ストラップタイプ） -->
@@ -693,7 +696,7 @@
         : "";
 
       return `
-        <svg viewBox="0 0 240 190" class="w-44 h-36 mx-auto drop-shadow-sm transition-all duration-300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ラブレター型迷子タグ">
+        <svg viewBox="${viewBox}" class="w-44 h-40 mx-auto drop-shadow-sm transition-all duration-300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ラブレター型迷子タグ">
           <circle cx="42" cy="148" r="4" fill="#fbcfe8" />
           <circle cx="204" cy="46" r="5" fill="#bae6fd" />
           <path d="M196 142 C196 138, 190 138, 190 142 C190 138, 184 138, 184 142 C184 147, 190 151, 190 151 C190 151, 196 147, 196 142 Z" fill="#fde68a" />
