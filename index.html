@@ -83,23 +83,23 @@
   <!-- =========================================================
        ヘッダー（ロゴ表示エリア ＋ 3ページ切り替えナビゲーション）
   ========================================================== -->
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b-2 border-pink-soft shadow-sm">
-    <div class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2">
+  <header class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b-2 border-pink-soft shadow-sm">
+    <div class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2 w-full">
       
       <!-- ★ ロゴ表示エリア ★ -->
-      <a href="#top" data-route="top" class="route-link flex items-center gap-2.5 group focus:outline-none shrink-0">
+      <a href="#top" data-route="top" class="route-link flex items-center gap-2 group focus:outline-none min-w-0 flex-1 lg:flex-initial">
         <!-- ▼ サンプルロゴ（ご自身の画像を入れるまで表示されます） ▼ -->
-        <div class="sample-logo flex items-center gap-2 bg-pink-soft/70 px-3 sm:px-3.5 py-1.5 rounded-full border-2 border-pink-pastel transition-transform duration-300 group-hover:scale-105">
+        <div class="sample-logo inline-flex items-center gap-2 bg-pink-soft/70 px-2.5 sm:px-3.5 py-1.5 rounded-full border-2 border-pink-pastel transition-transform duration-300 group-hover:scale-105 max-w-full">
           <img src="logo.png" alt="Filmie ロゴ" class="h-11 sm:h-13 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
-          <div class="whitespace-nowrap">
-            <span class="block text-base sm:text-xl font-bold tracking-wide text-choco leading-none">Filmie</span>
-            <span class="block text-[9px] sm:text-[10px] text-pink-dark font-medium tracking-wider mt-0.5">HANDMADE &amp; GOODS</span>
+          <div class="min-w-0 truncate">
+            <span class="block text-base sm:text-xl font-bold tracking-wide text-choco leading-none truncate">Filmie</span>
+            <span class="hidden sm:block text-[10px] text-pink-dark font-medium tracking-wider mt-0.5">HANDMADE &amp; GOODS</span>
           </div>
         </div>
         <!-- ▲ サンプルロゴここまで ▲ -->
       </a>
 
-      <!-- PC用ナビゲーションメニュー（改行防止・横一列整列） -->
+      <!-- PC用ナビゲーションメニュー（1行横並び） -->
       <nav class="hidden lg:flex items-center gap-1.5 shrink-0">
         <a href="#top" data-route="top" class="route-link nav-tab px-3.5 py-2 rounded-full text-sm font-bold whitespace-nowrap shrink-0 transition-colors">
           🎀 TOP・グッズ一覧
@@ -116,25 +116,28 @@
         </a>
       </nav>
 
-      <!-- タブレット・スマホ用 BOOTHボタン（上部右側） -->
+      <!-- タブレット・スマホ用 BOOTHボタン（画面右端で見切れないコンパクト設計） -->
       <div class="flex lg:hidden items-center shrink-0">
-        <a href="https://booth.pm/" target="_blank" rel="noopener noreferrer" class="px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-pink-main text-white shadow-kawaii hover:bg-pink-dark whitespace-nowrap shrink-0 transition-all flex items-center gap-1">
-          <span>🛍️ BOOTH</span>
-          <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        <a href="https://booth.pm/" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold bg-pink-main text-white shadow-kawaii hover:bg-pink-dark whitespace-nowrap shrink-0 transition-all flex items-center gap-1">
+          <span class="sm:hidden">BOOTH ↗</span>
+          <span class="hidden sm:inline-flex items-center gap-1">
+            <span>🛍️ BOOTHショップ</span>
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </span>
         </a>
       </div>
     </div>
 
-    <!-- タブレット・スマホ用 3タブ横一列ナビゲーション（文字が改行されないコンパクト設計） -->
-    <nav class="flex lg:hidden items-center justify-center gap-1 sm:gap-2 px-2 py-2 border-t border-pink-soft/80 bg-cream/90">
-      <a href="#top" data-route="top" class="route-link nav-tab px-2.5 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-bold whitespace-nowrap shrink-0 transition-colors">
-        🎀 TOP・グッズ一覧
+    <!-- タブレット・スマホ用 3タブ均等グリッドナビゲーション（320px幅でもはみ出し防止） -->
+    <nav class="grid lg:hidden grid-cols-3 gap-1 sm:gap-2 w-full px-2 sm:px-4 py-1.5 sm:py-2 border-t border-pink-soft/80 bg-cream/90">
+      <a href="#top" data-route="top" class="route-link nav-tab text-center px-1 sm:px-3 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-sm font-bold whitespace-nowrap truncate transition-colors">
+        🎀 TOP・グッズ
       </a>
-      <a href="#concept" data-route="concept" class="route-link nav-tab px-2.5 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-bold whitespace-nowrap shrink-0 transition-colors">
+      <a href="#concept" data-route="concept" class="route-link nav-tab text-center px-1 sm:px-3 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-sm font-bold whitespace-nowrap truncate transition-colors">
         🌷 コンセプト
       </a>
-      <a href="#guide" data-route="guide" class="route-link nav-tab px-2.5 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-bold whitespace-nowrap shrink-0 transition-colors">
-        🏷️ 迷子タグの使い方
+      <a href="#guide" data-route="guide" class="route-link nav-tab text-center px-1 sm:px-3 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-sm font-bold whitespace-nowrap truncate transition-colors">
+        🏷️ 迷子タグ説明
       </a>
     </nav>
   </header>
