@@ -735,97 +735,33 @@
     /**
      * グッズ種類ごとの可愛いSVGイラストを生成（選択カラーに連動して色が変わります）
      */
-    function createGoodsIllustrationSvg(iconType, mainHex, strokeHex) {
-      const fill = mainHex || '#FFB7C5';
-      const stroke = strokeHex || '#5C4B51';
+function createLoveLetterSvg(color) {
+  const heartFill = color.hex || "#f9a8d4";
+  const heartStroke = color.hex && color.hex.toLowerCase() === "#ffffff" ? "#f9a8d4" : "#ffffff";
 
-      if (iconType === 'heart') {
-        return `
-          <svg viewBox="0 0 240 190" width="240" height="190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ラブレター型迷子タグ">
-  <!-- 背景の装飾（キラキラ・小ハート） -->
-  <circle cx="42" cy="148" r="4" fill="#fbcfe8" />
-  <circle cx="204" cy="46" r="5" fill="#bae6fd" />
-  <path d="M196 142 C196 138, 190 138, 190 142 C190 138, 184 138, 184 142 C184 147, 190 151, 190 151 C190 151, 196 147, 196 142 Z" fill="#fde68a" />
-
-  <!-- 左上のストラップ紐 -->
-  <path d="M62 66 C 42 46, 22 32, 16 18 C 12 9, 24 4, 32 12 C 44 24, 54 44, 65 63" fill="none" stroke="#f9a8d4" stroke-width="5" stroke-linecap="round" />
-  <path d="M62 66 C 42 46, 22 32, 16 18 C 12 9, 24 4, 32 12 C 44 24, 54 44, 65 63" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3 4" stroke-linecap="round" opacity="0.8" />
-  <!-- ストラップ結び目パーツ -->
-  <rect x="44" y="42" width="11" height="7" rx="3.5" transform="rotate(-42 44 42)" fill="#f472b6" />
-
-  <!-- ラブレター本体（影） -->
-  <rect x="52" y="56" width="144" height="98" rx="16" fill="#fce7f3" />
-  <!-- ラブレター本体（封筒） -->
-  <rect x="48" y="52" width="144" height="98" rx="16" fill="#fffdf9" stroke="#f9a8d4" stroke-width="3" />
-
-  <!-- 封筒のフラップ（フタ・折り目） -->
-  <path d="M52 145 L104 102 M188 145 L136 102" stroke="#fbcfe8" stroke-width="2.5" stroke-linecap="round" />
-  <path d="M51 57 L111 106 C116 110, 124 110, 129 106 L189 57" fill="#fff5f8" stroke="#f9a8d4" stroke-width="3" stroke-linejoin="round" />
-
-  <!-- 左上のハトメ（ストラップ穴・金具） -->
-  <circle cx="64" cy="67" r="6.5" fill="#fde68a" stroke="#f59e0b" stroke-width="1.5" />
-  <circle cx="64" cy="67" r="3" fill="#ffffff" />
-
-  <!-- 中央のハート（★ここをカラーごとに変更） -->
-  <path
-    d="M120 124 C120 124, 96 108, 96 93 C96 84, 103 78, 111 78 C115.5 78, 118.5 80.5, 120 83.5 C121.5 80.5, 124.5 78, 129 78 C137 78, 144 84, 144 93 C144 108, 120 124, 120 124 Z"
-    fill="#f9a8d4"
-    stroke="#ffffff"
-    stroke-width="2.5"
-    stroke-linejoin="round"
-  />
-  <!-- ハートのツヤ（ハイライト） -->
-  <path d="M103 91 C103 87, 106 84, 110 84" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.85" />
-</svg>
-        `;
-      }
-      if (iconType === 'cloud') {
-        return `
-          <svg viewBox="0 0 200 200" class="w-36 h-36 sm:w-40 sm:h-40 drop-shadow-sm transition-transform duration-300 group-hover:scale-105" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="100" cy="44" r="9" stroke="#D4AF37" stroke-width="4" fill="#FFFDF9"/>
-            <path d="M62 144H140C156 144 168 132 168 117C168 103 158 92 144 90C140 70 122 56 100 56C79 56 62 70 57 89C43 91 32 102 32 117C32 132 45 144 62 144Z" fill="${fill}" stroke="${stroke}" stroke-width="3.5" stroke-linejoin="round"/>
-            <circle cx="84" cy="108" r="3.5" fill="${stroke}"/>
-            <circle cx="116" cy="108" r="3.5" fill="${stroke}"/>
-            <path d="M95 114C97 117 103 117 105 114" stroke="${stroke}" stroke-width="3" stroke-linecap="round"/>
-            <ellipse cx="76" cy="115" rx="5" ry="3" fill="#FF8FA3" fill-opacity="0.6"/>
-            <ellipse cx="124" cy="115" rx="5" ry="3" fill="#FF8FA3" fill-opacity="0.6"/>
-          </svg>
-        `;
-      }
-      if (iconType === 'card') {
-        return `
-          <svg viewBox="0 0 200 200" class="w-36 h-36 sm:w-40 sm:h-40 drop-shadow-sm transition-transform duration-300 group-hover:scale-105" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="52" y="32" width="96" height="136" rx="16" fill="${fill}" stroke="${stroke}" stroke-width="3.5"/>
-            <rect x="64" y="46" width="72" height="96" rx="10" fill="#FFFDF9" stroke="${stroke}" stroke-width="2.5"/>
-            <path d="M100 76L105 87L117 88L108 96L111 108L100 102L89 108L92 96L83 88L95 87L100 76Z" fill="${fill}" stroke="${stroke}" stroke-width="2.5" stroke-linejoin="round"/>
-            <circle cx="76" cy="153" r="4" fill="#FFFDF9"/>
-            <circle cx="100" cy="153" r="4" fill="#FFFDF9"/>
-            <circle cx="124" cy="153" r="4" fill="#FFFDF9"/>
-          </svg>
-        `;
-      }
-      if (iconType === 'ribbon') {
-        return `
-          <svg viewBox="0 0 200 200" class="w-36 h-36 sm:w-40 sm:h-40 drop-shadow-sm transition-transform duration-300 group-hover:scale-105" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="100" cy="44" r="9" stroke="#D4AF37" stroke-width="4" fill="#FFFDF9"/>
-            <path d="M88 94L48 68C40 63 32 69 34 78L44 114C46 122 55 125 62 120L88 102" fill="${fill}" stroke="${stroke}" stroke-width="3.5" stroke-linejoin="round"/>
-            <path d="M112 94L152 68C160 63 168 69 166 78L156 114C154 122 145 125 138 120L112 102" fill="${fill}" stroke="${stroke}" stroke-width="3.5" stroke-linejoin="round"/>
-            <path d="M88 106L68 152L84 146L94 156L98 110" fill="${fill}" stroke="${stroke}" stroke-width="3.5" stroke-linejoin="round"/>
-            <path d="M112 106L132 152L116 146L106 156L102 110" fill="${fill}" stroke="${stroke}" stroke-width="3.5" stroke-linejoin="round"/>
-            <rect x="86" y="84" width="28" height="28" rx="10" fill="#FFFDF9" stroke="${stroke}" stroke-width="3.5"/>
-          </svg>
-        `;
-      }
-      return `
-        <svg viewBox="0 0 200 200" class="w-36 h-36 sm:w-40 sm:h-40 drop-shadow-sm transition-transform duration-300 group-hover:scale-105" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="100" cy="36" r="9" stroke="#D4AF37" stroke-width="4" fill="#FFFDF9"/>
-          <path d="M100 48L115 82L152 87L125 113L132 150L100 132L68 150L75 113L48 87L85 82L100 48Z" fill="${fill}" stroke="${stroke}" stroke-width="3.5" stroke-linejoin="round"/>
-          <circle cx="91" cy="100" r="3" fill="${stroke}"/>
-          <circle cx="109" cy="100" r="3" fill="${stroke}"/>
-          <path d="M96 107C98 109 102 109 104 107" stroke="${stroke}" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-      `;
-    }
+  return `
+    <svg viewBox="0 0 240 190" class="w-44 h-36 mx-auto drop-shadow-sm transition-all duration-300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ラブレター型迷子タグ">
+      <circle cx="42" cy="148" r="4" fill="#fbcfe8" />
+      <circle cx="204" cy="46" r="5" fill="#bae6fd" />
+      <path d="M196 142 C196 138, 190 138, 190 142 C190 138, 184 138, 184 142 C184 147, 190 151, 190 151 C190 151, 196 147, 196 142 Z" fill="#fde68a" />
+      <!-- 左上のストラップ -->
+      <path d="M62 66 C 42 46, 22 32, 16 18 C 12 9, 24 4, 32 12 C 44 24, 54 44, 65 63" fill="none" stroke="#f9a8d4" stroke-width="5" stroke-linecap="round" />
+      <path d="M62 66 C 42 46, 22 32, 16 18 C 12 9, 24 4, 32 12 C 44 24, 54 44, 65 63" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3 4" stroke-linecap="round" opacity="0.8" />
+      <rect x="44" y="42" width="11" height="7" rx="3.5" transform="rotate(-42 44 42)" fill="#f472b6" />
+      <!-- ラブレター本体 -->
+      <rect x="52" y="56" width="144" height="98" rx="16" fill="#fce7f3" />
+      <rect x="48" y="52" width="144" height="98" rx="16" fill="#fffdf9" stroke="#f9a8d4" stroke-width="3" />
+      <path d="M52 145 L104 102 M188 145 L136 102" stroke="#fbcfe8" stroke-width="2.5" stroke-linecap="round" />
+      <path d="M51 57 L111 106 C116 110, 124 110, 129 106 L189 57" fill="#fff5f8" stroke="#f9a8d4" stroke-width="3" stroke-linejoin="round" />
+      <!-- 左上のハトメ -->
+      <circle cx="64" cy="67" r="6.5" fill="#fde68a" stroke="#f59e0b" stroke-width="1.5" />
+      <circle cx="64" cy="67" r="3" fill="#ffffff" />
+      <!-- 中央のハート（カラー連動） -->
+      <path d="M120 124 C120 124, 96 108, 96 93 C96 84, 103 78, 111 78 C115.5 78, 118.5 80.5, 120 83.5 C121.5 80.5, 124.5 78, 129 78 C137 78, 144 84, 144 93 C144 108, 120 124, 120 124 Z" fill="${heartFill}" stroke="${heartStroke}" stroke-width="2.5" stroke-linejoin="round" />
+      <path d="M103 91 C103 87, 106 84, 110 84" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.85" />
+    </svg>
+  `;
+}
 
     function initApp() {
       // 二重初期化防止
