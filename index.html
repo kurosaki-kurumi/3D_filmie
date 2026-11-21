@@ -661,7 +661,7 @@
     ];
 
     /**
-     * ラブレター型迷子タグのSVGイラストを生成（選択カラー＆ストラップ/チェーンに対応）
+     * ラブレター型迷子タグのSVGイラストを生成（シルバーストラップ＆左右ネックレスチェーン対応）
      */
     function createGoodsIllustrationSvg(iconType, colorHex) {
       const heartFill = colorHex || "#f9a8d4";
@@ -669,19 +669,28 @@
       const isLightColor = normalizedHex === "#ffffff" || normalizedHex === "#fffdf7";
       const heartStroke = isLightColor ? "#cbd5e1" : "#ffffff";
 
-      // ストラップパーツ or ボールチェーンパーツの切り替え
+      // ストラップパーツ（シルバー） or 左右ネックレスチェーンパーツの切り替え
       const attachmentSvg = iconType === "chain"
         ? `
-          <!-- ボールチェーン（チェーンタイプ） -->
-          <path d="M62 66 C 42 40, 18 28, 16 14 C 15 6, 28 4, 34 12 C 44 26, 54 44, 65 63" fill="none" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 6" />
-          <circle cx="44" cy="43" r="3.5" fill="#94a3b8" />
+          <!-- 左右のネックレス風ボールチェーン（チェーンタイプ） -->
+          <path d="M64 67 C 68 22, 92 10, 120 10 C 148 10, 172 22, 176 67" fill="none" stroke="#94a3b8" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="1 6.5" />
+          <path d="M64 67 C 68 22, 92 10, 120 10 C 148 10, 172 22, 176 67" fill="none" stroke="#e2e8f0" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="1 6.5" />
         `
         : `
-          <!-- 左上のストラップ（ストラップタイプ） -->
-          <path d="M62 66 C 42 46, 22 32, 16 18 C 12 9, 24 4, 32 12 C 44 24, 54 44, 65 63" fill="none" stroke="#f9a8d4" stroke-width="5" stroke-linecap="round" />
-          <path d="M62 66 C 42 46, 22 32, 16 18 C 12 9, 24 4, 32 12 C 44 24, 54 44, 65 63" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3 4" stroke-linecap="round" opacity="0.8" />
-          <rect x="44" y="42" width="11" height="7" rx="3.5" transform="rotate(-42 44 42)" fill="#f472b6" />
+          <!-- 左上のシルバーストラップ（ストラップタイプ） -->
+          <path d="M62 66 C 42 46, 22 32, 16 18 C 12 9, 24 4, 32 12 C 44 24, 54 44, 65 63" fill="none" stroke="#94a3b8" stroke-width="5" stroke-linecap="round" />
+          <path d="M62 66 C 42 46, 22 32, 16 18 C 12 9, 24 4, 32 12 C 44 24, 54 44, 65 63" fill="none" stroke="#f1f5f9" stroke-width="1.5" stroke-dasharray="3 4" stroke-linecap="round" opacity="0.9" />
+          <rect x="44" y="42" width="11" height="7" rx="3.5" transform="rotate(-42 44 42)" fill="#64748b" />
         `;
+
+      // チェーンタイプの場合は右上にもハトメを表示
+      const rightEyeletSvg = iconType === "chain"
+        ? `
+          <!-- 右上のハトメ -->
+          <circle cx="176" cy="67" r="6.5" fill="#fde68a" stroke="#f59e0b" stroke-width="1.5" />
+          <circle cx="176" cy="67" r="3" fill="#ffffff" />
+        `
+        : "";
 
       return `
         <svg viewBox="0 0 240 190" class="w-44 h-36 mx-auto drop-shadow-sm transition-all duration-300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ラブレター型迷子タグ">
@@ -701,13 +710,13 @@
           <!-- 左上のハトメ -->
           <circle cx="64" cy="67" r="6.5" fill="#fde68a" stroke="#f59e0b" stroke-width="1.5" />
           <circle cx="64" cy="67" r="3" fill="#ffffff" />
+          ${rightEyeletSvg}
           <!-- 中央のハート（カラー連動） -->
           <path d="M120 124 C120 124, 96 108, 96 93 C96 84, 103 78, 111 78 C115.5 78, 118.5 80.5, 120 83.5 C121.5 80.5, 124.5 78, 129 78 C137 78, 144 84, 144 93 C144 108, 120 124, 120 124 Z" fill="${heartFill}" stroke="${heartStroke}" stroke-width="2.5" stroke-linejoin="round" />
           <path d="M103 91 C103 87, 106 84, 110 84" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.85" />
         </svg>
       `;
     }
-
     function initApp() {
       if (window.__filmieAppInitialized) return;
       window.__filmieAppInitialized = true;
